@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestionnaire de budget</title>
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="entete">
+    <div class="entete-flex">
+      <div class="entete-gauche">
+        <img src="img/logo.jpg" alt="Logo" class="logo" />
+        <span class="entete-titre">Mes finances</span>
+      </div>
+      <div class="entete-droite">
+        <button id="menu-bascule" class="bouton-menu">☰ Menu</button>
+        <nav class="nav-principale" id="nav-principale">
+          <ul>
+            <li><a href="acceuil2.html" class="bouton-nav">Accueil</a></li>
+            <li><a href="a propos.html" class="bouton-nav">À propos</a></li>
+            <li><a href="index.html" class="bouton-nav actif">Mes finances</a></li>
+            <li><a href="#utilisateurs" class="bouton-nav">Utilisateurs</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="entete-contenu">
+    <h1>Bienvenue sur le Gestionnaire de Budget</h1>
+    <p class="sous-titre">
+      Simplifiez la gestion de vos finances personnelles.<br>
+      <span class="slogan">Votre argent, votre avenir.</span>
+    </p>
+  </div>
+
+  <div class="conteneur">
+    <!-- Astuce -->
+    <section class="section-astuce">
+      <p class="astuce">
+        💡 Astuce : Notez chaque dépense, même petite, pour mieux visualiser vos habitudes et économiser plus facilement !
+      </p>
+    </section>
+
+    <!-- Tableau de bord -->
+    <section class="tableau-bord" id="finances">
+      <div class="carte">
+        <h2>Solde</h2>
+        <p id="solde">0 €</p>
+        <span class="icone">💼</span>
+      </div>
+      <div class="carte verte">
+        <h3>Revenus</h3>
+        <p id="revenus">0 €</p>
+        <span class="icone">💶</span>
+      </div>
+      <div class="carte bleue">
+        <h3>Épargne</h3>
+        <p id="epargne">0 €</p>
+        <span class="icone">🏦</span>
+      </div>
+      <div class="carte rouge">
+        <h3>Dépenses</h3>
+        <p id="depenses">0 €</p>
+        <span class="icone">💸</span>
+      </div>
+    </section>
+
+    <!-- Formulaire -->
+    <section class="section-formulaire">
+      <h2>Ajouter une transaction</h2>
+      <form id="formulaire-transaction">
+        <select id="type" required>
+          <option value="" disabled selected>Type de transaction</option>
+          <option value="revenu">Revenu</option>
+          <option value="depense">Dépense</option>
+          <option value="epargne">Épargne</option>
+        </select>
+        <input type="text" id="description" placeholder="Description" required />
+        <input type="number" id="montant" placeholder="Montant (€)" required min="0.01" step="0.01" />
+        <button type="submit">Ajouter</button>
+        <button type="button" id="reinitialiser-btn" class="bouton-reinitialiser">Remettre à zéro</button>
+      </form>
+    </section>
+
+    <!-- Liste des transactions -->
+    <section class="section-transactions">
+      <h2>Historique des transactions</h2>
+      <div class="filtre-transactions" style="margin-bottom:18px;">
+        <label for="periode-select"><strong>Filtrer par :</strong></label>
+        <select id="periode-select">
+          <option value="jour">Jour</option>
+          <option value="semaine">Semaine</option>
+          <option value="mois" selected>Mois</option>
+          <option value="annee">Année</option>
+          <option value="tous">Toutes les transactions</option>
+        </select>
+        <input type="date" id="date-filtre" style="margin-left:10px;">
+      </div>
+      <div id="totaux-periode" style="margin-bottom:18px;font-weight:bold;"></div>
+      <ul id="liste-transactions"></ul>
+    </section>
+  </div>
+
+
+  <footer class="pied-page">
+    <p>&copy; 2025 Gestionnaire de budget. Tous droits réservés.</p>
+  </footer>
+
+  <script src="index.js"></script>
+  <script>
+    // Menu responsive
+    const menuBtn = document.getElementById('menu-bascule');
+    const nav = document.getElementById('nav-principale');
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('afficher');
+    });
+  </script>
+</body>
+</html>

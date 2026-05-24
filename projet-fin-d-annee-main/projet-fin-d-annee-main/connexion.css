@@ -1,0 +1,261 @@
+/* =======================
+   BASE
+======================= */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  padding-top: 150px;
+}
+
+/* =======================
+   ENTETE
+======================= */
+.entete {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  background: linear-gradient(90deg, #007bff 60%, #6dd5ed 100%);
+  color: white;
+  padding: 15px 0 20px 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.entete-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px 0 30px;
+}
+
+.entete-gauche {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  width: 70px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.entete-titre {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.entete-contenu {
+  max-width: 600px;
+  margin: 40px auto 0 auto;
+  text-align: center;
+}
+
+.sous-titre {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #161616;
+}
+
+.surligner {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.slogan {
+  font-size: 1.1em;
+  color: rgb(75, 75, 75);
+  font-style: italic;
+}
+
+/* =======================
+   NAVIGATION
+======================= */
+.bouton-menu {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 18px;
+  font-size: 1.1em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.bouton-menu:hover {
+  background: #0056b3;
+}
+
+.nav-principale {
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  padding: 15px 0;
+  z-index: 100;
+}
+.nav-principale.afficher {
+  display: block;
+}
+.nav-principale ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bouton-nav,
+.nav-principale a {
+  display: block;
+  background: linear-gradient(90deg, #007bff 60%, #6dd5ed 100%);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.08em;
+  text-align: center;
+  transition: background 0.2s, transform 0.15s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.bouton-nav:hover,
+.nav-principale a:hover {
+  background: #0056b3;
+  color: #ffd700;
+  transform: scale(1.04);
+}
+
+/* Menu toujours visible sur desktop */
+@media (min-width: 900px) {
+  .bouton-menu {
+    display: none;
+  }
+  .nav-principale {
+    display: block !important;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .nav-principale ul {
+    flex-direction: row;
+    gap: 18px;
+    padding: 0;
+  }
+  .bouton-nav,
+  .nav-principale a {
+    padding: 10px 18px;
+    font-size: 1em;
+    background: linear-gradient(90deg, #007bff 60%, #6dd5ed 100%);
+  }
+}
+
+/* Responsive nav sur mobile */
+@media (max-width: 700px) {
+  .entete-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 10px 0 10px;
+  }
+  .nav-principale {
+    right: 10px;
+    top: 60px;
+  }
+  .nav-principale ul {
+    gap: 10px;
+  }
+}
+
+/* =======================
+   FORMULAIRE CONNEXION
+======================= */
+.conteneur {
+    margin-top: 200px;
+}
+
+.formulaire-connexion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.formulaire-connexion input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 1em;
+  transition: border 0.2s;
+}
+
+.formulaire-connexion input:focus {
+  border: 1.5px solid #007bff;
+  outline: none;
+}
+
+.bouton-acces {
+  background: linear-gradient(90deg, #007bff 60%, #6dd5ed 100%);
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 7px;
+  padding: 12px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.bouton-acces:hover {
+  background: #0056b3;
+  transform: scale(1.04);
+}
+
+#connexion-succes {
+  margin-top: 15px;
+  font-size: 1.05em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.section-formulaire {
+  background: #f4f6f8;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 32px 24px 24px 24px;
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .section-formulaire {
+    padding: 18px 6vw 18px 6vw;
+  }
+}
+
+/* =======================
+   PIED DE PAGE
+======================= */
+.pied-page {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 18px 0 10px 0;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin-top: 240px;
+  font-size: 0.95em;
+  letter-spacing: 1px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion - Mes finances</title>
+  <link rel="stylesheet" href="connexion.css" />
+</head>
+<body>
+  <header class="entete">
+    <div class="entete-flex">
+      <div class="entete-gauche">
+        <img src="img/logo.jpg" alt="Logo" class="logo" />
+        <span class="entete-titre">Mes finances</span>
+      </div>
+      <div class="entete-droite">
+        <a href="formulaire.html" class="bouton-nav">Créer un compte</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="conteneur">
+    <section class="section-formulaire" style="max-width:400px;margin:auto;">
+      <h2>Connexion</h2>
+      <form id="formulaire-connexion" class="formulaire-connexion" autocomplete="off">
+        <input type="email" id="courriel" placeholder="Adresse e-mail" required>
+        <input type="password" id="mot-de-passe" placeholder="Mot de passe" required>
+        <div style="margin:8px 0 0 2px; text-align:left;">
+            <input type="checkbox" id="afficher-mot-de-passe" style="margin-right:6px;">
+            <label for="afficher-mot-de-passe" style="font-size:0.98em;cursor:pointer;">Afficher les mots de passe</label>
+        </div>
+        <button type="submit" class="bouton-acces">Se connecter</button>
+      </form>
+      <div id="connexion-succes" style="display:none;color:green;font-weight:bold;margin-top:15px;text-align:center;"></div>
+      <p style="text-align:center;margin-top:18px;">
+        Pas encore de compte ? <a href="formulaire.html" style="color:#007bff;text-decoration:underline;">Inscrivez-vous ici</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="pied-page">
+    <p>&copy; 2025 Mes finances. Tous droits réservés.</p>
+  </footer>
+<script>
+  // Afficher/masquer le mot de passe
+  document.getElementById('afficher-mot-de-passe').addEventListener('change', function() {
+    const pwd = document.getElementById('mot-de-passe');
+    pwd.type = this.checked ? 'text' : 'password';
+  });
+
+  // Gestion de la connexion
+  document.getElementById('formulaire-connexion').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const courriel = document.getElementById('courriel').value.trim();
+    const motDePasse = document.getElementById('mot-de-passe').value;
+    const msg = document.getElementById('connexion-succes');
+
+    // Récupérer les utilisateurs enregistrés
+    let utilisateurs = JSON.parse(localStorage.getItem('utilisateurs')) || [];
+    // Vérifier si un utilisateur correspond
+    const utilisateur = utilisateurs.find(u => u.courriel === courriel && u.motDePasse === motDePasse);
+
+    if (utilisateur) {
+      msg.style.display = "block";
+      msg.style.color = "green";
+      msg.textContent = "Connexion réussie avec l'adresse : " + courriel;
+      setTimeout(() => {
+        window.location.href = "acceuil2.html";
+      }, 1800);
+    } else {
+      msg.style.display = "block";
+      msg.style.color = "red";
+      msg.textContent = "Identifiants incorrects. Veuillez réessayer.";
+    }
+  });
+</script>
+</body>
+</html>

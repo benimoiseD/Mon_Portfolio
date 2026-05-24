@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Créer un compte - Mes finances</title>
+  <link rel="stylesheet" href="formulaire.css" />
+</head>
+<body>
+  <header class="entete">
+    <div class="entete-flex">
+      <div class="entete-gauche">
+        <img src="img/logo.jpg" alt="Logo" class="logo" />
+        <span class="entete-titre">Mes finances</span>
+      </div>
+      <div class="entete-droite">
+        <a href="acceuil.html" class="bouton-nav">Accueil</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="conteneur">
+    <section class="section-formulaire" style="max-width:400px;margin:auto;">
+      <h2>Créer un compte</h2>
+<form id="formulaire-inscription" class="formulaire-inscription" autocomplete="off">
+  <input type="text" id="nom-utilisateur" placeholder="Nom d'utilisateur" required>
+  <input type="email" id="courriel" placeholder="Adresse e-mail" required>
+  <input type="password" id="mot-de-passe" placeholder="Mot de passe" required>
+  <input type="password" id="confirmer-mot-de-passe" placeholder="Confirmer le mot de passe" required>
+  <div style="margin:8px 0 0 2px; text-align:left;">
+    <input type="checkbox" id="afficher-mot-de-passe" style="margin-right:6px;">
+    <label for="afficher-mot-de-passe" style="font-size:0.98em;cursor:pointer;">Afficher les mots de passe</label>
+  </div>
+  <button type="submit" class="bouton-acces">Créer mon compte</button>
+</form>
+      <div id="inscription-succes" style="display:none;color:green;font-weight:bold;margin-top:15px;text-align:center;"></div>
+      <p style="text-align:center;margin-top:18px;">
+        Déjà inscrit ? <a href="connexion.html" style="color:#007bff;text-decoration:underline;">Connectez-vous ici</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="pied-page">
+    <p>&copy; 2025 Mes finances. Tous droits réservés.</p>
+  </footer>
+<script>
+  // Sauvegarde des utilisateurs dans le localStorage
+  function sauvegarderUtilisateur(nomUtilisateur, courriel, motDePasse) {
+    let utilisateurs = JSON.parse(localStorage.getItem('utilisateurs')) || [];
+    utilisateurs.push({ nomUtilisateur, courriel, motDePasse });
+    localStorage.setItem('utilisateurs', JSON.stringify(utilisateurs));
+  }
+
+  document.getElementById('formulaire-inscription').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nomUtilisateur = document.getElementById('nom-utilisateur').value.trim();
+    const courriel = document.getElementById('courriel').value.trim();
+    const motDePasse = document.getElementById('mot-de-passe').value;
+    const confirmer = document.getElementById('confirmer-mot-de-passe').value;
+    const msg = document.getElementById('inscription-succes');
+    if(motDePasse !== confirmer) {
+      msg.style.display = "block";
+      msg.style.color = "red";
+      msg.textContent = "Les mots de passe ne correspondent pas.";
+      return;
+    }
+    // Sauvegarde dans le localStorage
+    sauvegarderUtilisateur(nomUtilisateur, courriel, motDePasse);
+    msg.style.display = "block";
+    msg.style.color = "green";
+    msg.textContent = "Compte créé avec succès pour " + nomUtilisateur + " (" + courriel + ") !";
+    setTimeout(() => {
+      window.location.href = "acceuil2.html";
+    }, 2000);
+  });
+
+  // Afficher/masquer les mots de passe
+  document.getElementById('afficher-mot-de-passe').addEventListener('change', function() {
+    const pwd = document.getElementById('mot-de-passe');
+    const conf = document.getElementById('confirmer-mot-de-passe');
+    const type = this.checked ? 'text' : 'password';
+    pwd.type = type;
+    conf.type = type;
+  });
+</script>
+</body>
+</html>

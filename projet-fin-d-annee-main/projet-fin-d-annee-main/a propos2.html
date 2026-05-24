@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accueil - Gestionnaire de budget</title>
+  <link rel="stylesheet" href="a propos.css" />
+</head>
+<body>
+  <header class="entete">
+    <div class="entete-flex">
+      <div class="entete-gauche">
+        <img src="img/logo.jpg" alt="Logo" class="logo" />
+        <span class="entete-titre">Mes finances</span>
+      </div>
+      <div class="entete-droite">
+        <button id="menu-bascule" class="bouton-menu">☰ Menu</button>
+        <nav class="nav-principale" id="nav-principale">
+          <ul>
+            <li><a href="acceuil.html" class="bouton-nav">Accueil</a></li>
+            <li><a href="a propos.html" class="bouton-nav">À propos</a></li>
+            <li><a href="formulaire.html" class="bouton-nav">Utilisateurs</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+    <div class="entete-contenu">
+      <h1>À propos de <span class="surligner">Mes finances</span></h1>
+      <p class="sous-titre">
+        L’outil moderne et simple pour gérer votre budget, suivre vos dépenses et atteindre vos objectifs financiers.<br>
+        <span class="slogan">Votre argent, votre avenir.</span>
+      </p>
+    </div>
+
+  <main class="conteneur">
+    <section id="fonctionnalites" style="margin-top:40px;">
+      <h2>Fonctionnalités clés</h2>
+      <div class="liste-fonctionnalites">
+        <div class="carte-fonctionnalite">
+          <span class="icone">💼</span>
+          <h3>Suivi du solde</h3>
+          <p>Visualisez en temps réel votre solde et vos mouvements financiers.</p>
+        </div>
+        <div class="carte-fonctionnalite">
+          <span class="icone">💶</span>
+          <h3>Gestion des revenus</h3>
+          <p>Ajoutez et catégorisez facilement vos sources de revenus.</p>
+        </div>
+        <div class="carte-fonctionnalite">
+          <span class="icone">💸</span>
+          <h3>Suivi des dépenses</h3>
+          <p>Analysez vos dépenses pour mieux économiser chaque mois.</p>
+        </div>
+        <div class="carte-fonctionnalite">
+          <span class="icone">🏦</span>
+          <h3>Épargne</h3>
+          <p>Planifiez et suivez vos objectifs d’épargne simplement.</p>
+        </div>
+        <div class="carte-fonctionnalite">
+          <span class="icone">📊</span>
+          <h3>Statistiques</h3>
+          <p>Obtenez des graphiques clairs pour visualiser vos finances.</p>
+        </div>
+        <div class="carte-fonctionnalite">
+          <span class="icone">🔒</span>
+          <h3>Sécurité</h3>
+          <p>Vos données sont privées et sécurisées, accessibles uniquement sur votre appareil.</p>
+        </div>
+      </div>
+    </section>
+
+  <section id="apropos" style="margin-top:40px;">
+  <h2>À propos</h2>
+  <div class="bloc-apropos">
+    <p>
+      <strong>Mes finances</strong> est bien plus qu’un simple outil de gestion budgétaire : c’est votre partenaire pour reprendre le contrôle de votre vie financière, sans stress ni jargon compliqué.
+    </p>
+    <ul class="liste-apropos">
+      <li>✅ <strong>Simple</strong> : une interface claire, accessible à tous, même sans connaissances en finance.</li>
+      <li>✅ <strong>Confidentiel</strong> : vos données restent privées, stockées uniquement sur votre appareil.</li>
+      <li>✅ <strong>Gratuit</strong> : profitez de toutes les fonctionnalités sans abonnement ni publicité.</li>
+      <li>✅ <strong>Motivant</strong> : suivez vos progrès, fixez-vous des objectifs et célébrez chaque réussite.</li>
+    </ul>
+    <p style="margin-top:18px;">
+      <em>Notre mission : vous aider à mieux comprendre, gérer et faire grandir votre argent, pour réaliser vos projets et vivre plus sereinement.</em>
+    </p>
+  </div>
+</section>
+
+    <section id="utilisateurs" style="margin-top:40px;">
+      <h2>Utilisateurs</h2>
+      <p>Rejoignez une communauté grandissante de personnes qui prennent en main leurs finances !</p>
+      <ul class="liste-utilisateurs">
+        <li>👤 Alice Dupont</li>
+        <li>👤 Bob Martin</li>
+        <li>👤 Claire Lefèvre</li>
+        <li>👤 David Moreau</li>
+        <li>👤 Emma Dubois</li>
+        <li>👤 François Bernard</li>
+        <li>👤 Géraldine Petit</li>
+        <li>👤 Hugo Laurent</li>
+        <li>👤 Isabelle Garnier</li>
+        <li>👤 Julien Rousseau</li>
+        <li>👤 Karine Lambert</li>
+        <li>👤 Laurent Girard</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="pied-page">
+    <p>&copy; 2025 Mes finances. Tous droits réservés.</p>
+  </footer>
+  <script>
+    // Menu responsive
+    const menuBtn = document.getElementById('menu-bascule');
+    const nav = document.getElementById('nav-principale');
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('afficher');
+    });
+  </script>
+</body>
+</html>

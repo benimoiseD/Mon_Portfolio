@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accueil - Gestionnaire de budget</title>
+  <link rel="stylesheet" href="acceuil.css" />
+</head>
+<body>
+  <header class="entete">
+    <div class="entete-flex">
+      <div class="entete-gauche">
+        <img src="img/logo.jpg" alt="Logo" class="logo" />
+        <span class="entete-titre">Mes finances</span>
+      </div>
+      <div class="entete-droite">
+        <button id="menu-bascule" class="bouton-menu">☰ Menu</button>
+        <nav class="nav-principale" id="nav-principale">
+          <ul>
+            <li><a href="acceuil2.html" class="bouton-nav actif">Accueil</a></li>
+            <li><a href="a propos.html" class="bouton-nav">À propos</a></li>
+            <li><a href="index.html" class="bouton-nav">Mes finances</a></li>
+            <li><a href="Utilisateur.html" class="bouton-nav">Utilisateurs</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="entete-contenu">
+    <h1>Bienvenue sur <span class="surligner">Mes finances</span></h1>
+    <p class="sous-titre">
+      L’application qui simplifie la gestion de votre argent.<br>
+      Découvrez comment suivre, comprendre et améliorer vos finances au quotidien.
+    </p>
+    <a href="index.html" class="bouton-acces">Commencer maintenant</a>
+  </div>
+
+  <main class="conteneur">
+    <section class="section-presentation">
+      <h2>Pourquoi choisir Mes finances&nbsp;?</h2>
+      <div class="cartes-presentation">
+        <div class="carte-presentation">
+          <span class="icone">🚀</span>
+          <h3>Prise en main rapide</h3>
+          <p>Inscrivez vos revenus et dépenses en quelques clics, sans inscription ni complication.</p>
+        </div>
+        <div class="carte-presentation">
+          <span class="icone">📱</span>
+          <h3>Accessible partout</h3>
+          <p>Utilisez l’application sur ordinateur, tablette ou mobile, où que vous soyez.</p>
+        </div>
+        <div class="carte-presentation">
+          <span class="icone">🔒</span>
+          <h3>Respect de la vie privée</h3>
+          <p>Vos données restent sur votre appareil. Personne d’autre n’y a accès.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied-page">
+    <p>&copy; 2025 Mes finances. Tous droits réservés.</p>
+  </footer>
+  <script>
+    // Menu responsive
+    const menuBtn = document.getElementById('menu-bascule');
+    const nav = document.getElementById('nav-principale');
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('afficher');
+    });
+  </script>
+</body>
+</html>

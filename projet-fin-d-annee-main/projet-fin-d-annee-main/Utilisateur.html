@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mon profil - Mes finances</title>
+  <link rel="stylesheet" href="utilisateur.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-flex">
+      <div class="header-left">
+        <img src="img/logo.jpg" alt="Logo" class="logo" />
+        <span class="header-title">Mes finances</span>
+      </div>
+      <div class="header-right">
+        <a href="acceuil2.html" class="nav-btn">Accueil</a>
+        <li><a href="a propos.html" class="nav-btn">À propos</a></li>
+        <a href="index.html" class="nav-btn">Mes finances</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="profil-section" id="profil-section">
+      <img src="img/avatar.png" alt="Avatar" class="profil-avatar" id="profil-avatar">
+      <h2>Mon profil</h2>
+      <div class="profil-info"><span class="profil-label">Nom d'utilisateur :</span> <span id="profil-username"></span></div>
+      <div class="profil-info"><span class="profil-label">E-mail :</span> <span id="profil-email"></span></div>
+      <div class="profil-actions">
+        <button id="logout-btn">Se déconnecter</button>
+        <button id="delete-btn">Supprimer mon compte</button>
+      </div>
+      <div id="profil-message" class="profil-message"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Mes finances. Tous droits réservés.</p>
+  </footer>
+  <script>
+    // Récupération des infos utilisateur connecté
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    let currentEmail = localStorage.getItem('currentUserEmail');
+    let currentUser = users.find(u => u.email === currentEmail);
+
+    const usernameSpan = document.getElementById('profil-username');
+    const emailSpan = document.getElementById('profil-email');
+    const msgDiv = document.getElementById('profil-message');
+
+    if (currentUser) {
+      usernameSpan.textContent = currentUser.username;
+      emailSpan.textContent = currentUser.email;
+    } else {
+      document.getElementById('profil-section').innerHTML = "<p style='color:red;font-weight:bold;'>Aucun utilisateur connecté.<br><a href='connexion.html'>Se connecter</a></p>";
+    }
+
+    // Déconnexion
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', function() {
+        localStorage.removeItem('currentUserEmail');
+        window.location.href = "connexion.html";
+      });
+    }
+
+    // Suppression du compte
+    const deleteBtn = document.getElementById('delete-btn');
+    if (deleteBtn) {
+      deleteBtn.addEventListener('click', function() {
+        if(confirm("Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible.")) {
+          let users = JSON.parse(localStorage.getItem('users')) || [];
+          users = users.filter(u => u.email !== currentEmail);
+          localStorage.setItem('users', JSON.stringify(users));
+          localStorage.removeItem('currentUserEmail');
+          msgDiv.style.color = "green";
+          msgDiv.textContent = "Compte supprimé avec succès.";
+          setTimeout(() => {
+            window.location.href = "formulaire.html";
+          }, 1800);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

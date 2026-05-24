@@ -9,4 +9,4 @@ Vous y trouverez mes projets, mes compétences et mes coordonnées.
 - JavaScript
 
 ## 🌐 Démo en ligne
-[Voir le site](https://benimoiseD.github.io/Mon_Portfolio)
+[Voir le site](https://benimoised.github.io/Mon_Portfolio/)
